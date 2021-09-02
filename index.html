@@ -6,9 +6,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- Bootstrap Link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
 </head>
 
 <body>
+
+    <!-- Title -->
+
+    <header>
+        <h1 class="text-center text-info my-4 fw-bold">Search Open Library</h1>
+    </header>
+
+    <main>
+
+        <!-- Search input and button -->
+
+        <section class="input-group mb-3 w-50 mx-auto">
+            <input id="input-field" type="text" class="form-control" placeholder="Search Open Library"
+                aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button onclick="loadData()" class="btn btn-outline-secondary fw-bold fs-3 w-25" type="button"
+                id="button-addon2">Search</button>
+        </section>
+
+        <!-- show error -->
+
+        <h4 class="text-center" id="error"></h4>
+
+
+        <!-- book card section -->
+
+        <section id="book-container" class="row row-cols-1 row-cols-md-6 g-4 px-4">
+
+
+        </section>
+
+
+
+
+    </main>
+
 
 
     <script src="app.js"></script>

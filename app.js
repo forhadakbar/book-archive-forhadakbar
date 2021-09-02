@@ -1,56 +1,72 @@
 
+//Declear variable
+const searchInput = document.getElementById("input-field");
+const error = document.getElementById("error");
+const spinner = document.getElementById("spinner");
+const bookContainer = document.getElementById("book-container")
+const SearchingFor = document.getElementById("searching-for")
+
+
+
 // Search button event handler and fetch Data
+
 
 const loadData = () => {
 
-    const searchText = document.getElementById("input-field").value;
-
+    const searchText = searchInput.value;
 
     // Error if the input field is empty
-
-    const error = document.getElementById("error");
     if (searchText === '') {
         error.innerText = "Search field can not be empty"
+        bookContainer.textContent = '';
         return;
 
     }
 
+    //Spinner start
+    spinner.classList.remove("d-none");
+    SearchingFor.innerText = `Searhing for: ${searchText}`;
+
 
     // clear input text
-    document.getElementById("input-field").value = '';
+    searchInput.value = '';
+
+    // Fetch Data
 
     fetch(`https://openlibrary.org/search.json?q=${searchText}`)
         .then(res => res.json())
         .then(data => diplayData(data.docs))
 
-
+    // Clear error while data fetching
+    error.innerText = '';
+    // clear div for new search
+    bookContainer.textContent = '';
 }
+
+
 
 // Display data in bootstrap card
 
 const diplayData = books => {
 
-    const bookContainer = document.getElementById("book-container")
-    // clear div after search
-    bookContainer.textContent = '';
+    //Spinner end
+    spinner.classList.add("d-none");
 
     //Show number of result
 
     if (books.length === 0) {
-        document.getElementById("error").innerText = "No result found"
+        error.innerText = "No result found"
         return;
 
     }
 
     else {
-        document.getElementById("error").innerText = `Total ${books?.length} result found`
+        error.innerText = `Total ${books?.length} result found`
 
     }
 
 
     books?.forEach(book => {
-
-
 
         const div = document.createElement("div");
         div.classList.add("col");
